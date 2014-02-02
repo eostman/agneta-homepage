@@ -2,10 +2,30 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+var agnetaControllers = angular.module('agnetaControllers', []);
 
-  }])
-  .controller('MyCtrl2', [function() {
+agnetaControllers.controller('homeCtrl', 
+	['$scope', '$route', function($scope, $route) {
+		$scope.$route=$route;
+  	}]);
+agnetaControllers.controller('materialCtrl', 
+	['$scope', '$route', function($scope, $route) {
+		$scope.$route=$route;
+  	}]);
 
-  }]);
+agnetaControllers.controller('contactCtrl', 
+	['$scope', '$route', function($scope, $route) {
+		$scope.$route=$route;
+  	}]);
+
+agnetaControllers.controller('navCtrl', 
+	['$scope', '$location', function($scope, $location) {
+		$scope.pages = [
+			{path: '/home', title: 'Hem'},
+			{path: '/material', title: 'Material'},
+			{path: '/contact', title: 'Kontaktuppgifter'}
+		];
+		$scope.isActive = function(page){
+			return page.path == $location.path();
+		};
+  	}]);

@@ -2,15 +2,33 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+var agneta = angular.module('agneta', [
   'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  'agneta.filters',
+  'agneta.services',
+  'agneta.directives',
+  'agnetaControllers'
+]);
+
+agneta.config(['$routeProvider', 
+	function($routeProvider) {
+  $routeProvider.
+  	when('/home', {
+  		templateUrl: 'templates/home.html', 
+  		controller: 'homeCtrl',
+  		activeTab: 'home'
+  	}).
+  	when('/material', {
+  		templateUrl: 'templates/material.html', 
+  		controller: 'materialCtrl',
+  		activeTab: 'material'
+  	}).
+  	when('/contact', {
+  		templateUrl: 'templates/contact.html', 
+  		controller: 'contactCtrl',
+  		activeTab: 'contact'
+  	}).
+  	otherwise({
+  		redirectTo: '/home'
+  	});
 }]);
